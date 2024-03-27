@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "/codemirror.cn/",
   title: "CodeMirror",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
