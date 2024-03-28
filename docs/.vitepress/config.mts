@@ -13,8 +13,16 @@ export default defineConfig({
     logo: '/logo.svg',
 
     nav: [
-      { text: '案例', link: 'https://codemirror.net/examples/' },
-      { text: '文档', link: 'https://codemirror.net/docs/' },
+      {
+        text: '案例',
+        link: '/example/',
+        activeMatch: "/example/"
+      },
+      {
+        text: '文档',
+        link: '/documentation/',
+        activeMatch: "/documentation/"
+      },
       { text: '尝试', link: 'https://codemirror.net/try/' },
       { text: 'Discuss', link: 'https://discuss.codemirror.net/' },
       { text: 'Github', link: 'https://github.com/codemirror/dev/' },

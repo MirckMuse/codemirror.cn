@@ -37,8 +37,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+a {
+  color: rgba(60, 60, 67);
+}
+
 h3 {
-  font-size: 16px;
+  font-size: 16px default;
   margin: 0;
 }
 

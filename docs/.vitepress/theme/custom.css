@@ -1,10 +1,5 @@
 :root {
-  --vp-c-brand-1: inherit;
   --vp-font-family-base: 'Source Sans Pro', sans-serif;
-}
-
-.vp-doc ul {
-  list-style: none;
 }
 
 .container {
@@ -34,4 +29,49 @@ body {
 
 .vp-doc a {
   text-decoration: none;
+}
+
+ul.grid-list-5,
+ul.grid-list-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  padding: 0;
+  gap: 17px;
+}
+
+.grid-list>li,
+ul.grid-list-5>li,
+ul.grid-list-3>li {
+  display: block;
+}
+
+
+.grid-list ul,
+ul.grid-list-5>li,
+ul.grid-list-3>li {
+  list-style: none;
+}
+
+.grid-list>li+li,
+ul.grid-list-5>li+li,
+ul.grid-list-3>li+li {
+  margin-top: 0;
+}
+
+ul.grid-list-5 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  padding: 0;
+}
+
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 0 !important;
+  gap: 32px;
+  position: relative;
+}
+
+.limited-width-page .content {
+  padding: 0;
 }

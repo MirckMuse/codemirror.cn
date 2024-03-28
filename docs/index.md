@@ -10,30 +10,6 @@ import { features, langs } from "./config"
 import HomeFeature from "./components/HomeFeature.vue"
 </script>
 
-<style>
-ul.grid-list-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  padding: 0;
-  gap: 17px;
-}
-
-ul.grid-list-5 > li,
-ul.grid-list-3 > li {
-  display: block;
-}
-ul.grid-list-5 > li + li,
-ul.grid-list-3 > li + li {
-  margin-top: 0;
-}
-
-ul.grid-list-5 {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  padding: 0;
-}
-</style>
-
 <h1>可扩展代码编辑器</h1>
 
 CodeMirror 是用于 Web 的代码编辑器组件。它可以在网站中用于实现文本输入字段，支持许多编辑功能，并具有丰富的编程接口以允许进一步扩展。
