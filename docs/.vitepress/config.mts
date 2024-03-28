@@ -4,24 +4,25 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   base: "/codemirror.cn/",
   title: "CodeMirror",
+  lastUpdated: true,
+  head: [
+    ["meta", { name: "description", content: "codemirror code editor" }],
+    ['link', { rel: 'icon', href: '/codemirror.cn/logo.svg?2' }]
+  ],
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: '案例', link: '/markdown-examples' }
-    ],
+    logo: '/logo.svg',
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
+    nav: [
+      { text: '案例', link: 'https://codemirror.net/examples/' },
+      { text: '文档', link: 'https://codemirror.net/docs/' },
+      { text: '尝试', link: 'https://codemirror.net/try/' },
+      { text: 'Discuss', link: 'https://discuss.codemirror.net/' },
+      { text: 'Github', link: 'https://github.com/codemirror/dev/' },
+      { text: 'Version 5', link: 'https://codemirror.net/5/' },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/codemirror/dev/' }
+      // { icon: 'github', link: 'https://github.com/codemirror/dev/' }
     ]
   }
 })
