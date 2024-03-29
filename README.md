@@ -1,5 +1,9 @@
 # CodeMirror 中文
 
+官网：[**CodeMirror**](https://codemirror.net/)
+
+中文网：[**codemirror.cn**](https://mirckmuse.github.io/codemirror.cn/) 
+
 ## 介绍
 
 本项目是对 [**CodeMirror**](https://codemirror.net/) 官方网站的翻译，CodeMirror是一个非常优秀的面向 Web 的代码编辑器，以下简称 **CM**。
