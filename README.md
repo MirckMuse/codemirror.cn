@@ -24,6 +24,8 @@
 
 做这些事情并不容易，如果您愿意的话，可以打赏任意数额，这对于翻译进度非常有帮助，非常感谢。
 
-<img width="100" src="hthttps://mirckmuse.github.io/codemirror.cn/zhifubao.png">
+<div style="display: flex; gap: 12px">
+  <img height="200" src="https://mirckmuse.github.io/codemirror.cn/zhifubao.png">
 
-<img width="100" src="hthttps://mirckmuse.github.io/codemirror.cn/weixin.jpeg">
+  <img height="200" src="https://mirckmuse.github.io/codemirror.cn/weixin.jpeg">
+</div>
