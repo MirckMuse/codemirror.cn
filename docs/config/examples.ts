@@ -2,9 +2,9 @@ const prefix = "/codemirror.cn/example"
 
 export const ExampleBasic = [
   {
-    "title": "Bundling with Rollup",
-    "desc": "How to create a script file that you can load in the browser.",
-    "link": "https://codemirror.net/examples/bundle/"
+    "title": "Rollup",
+    "desc": "创建一个脚本文件让浏览器可以加载",
+    "link": `${prefix}/bundle`
   },
   {
     "title": "Configuration",
