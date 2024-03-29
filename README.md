@@ -24,5 +24,5 @@
 
 做这些事情并不容易，如果您愿意的话，可以打赏任意数额，这对于翻译进度非常有帮助，非常感谢。
 
-![image-20240329094332850](/zhifubao.png{width=100px})
-![image-20240329094332850](/weixin.png{width=100px})
+![zhifubao](public/image/zhifubao.png{width=100px})
+![weixin](public/image/weixin.png{width=100px})
