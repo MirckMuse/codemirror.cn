@@ -7,9 +7,9 @@ export const ExampleBasic = [
     "link": `${prefix}/bundle`
   },
   {
-    "title": "Configuration",
-    "desc": "Shows how to configure your editor and dynamically change its configuration.",
-    "link": "https://codemirror.net/examples/config/"
+    "title": "配置项",
+    "desc": "配置您的编辑器和动态修改配置项",
+    "link": `${prefix}/configuration`
   },
   {
     "title": "Styling",
