@@ -24,5 +24,6 @@
 
 做这些事情并不容易，如果您愿意的话，可以打赏任意数额，这对于翻译进度非常有帮助，非常感谢。
 
-![zhifubao](public/image/zhifubao.png{width=100px})
-![weixin](public/image/weixin.png{width=100px})
+<img width="100" src="hthttps://mirckmuse.github.io/codemirror.cn/zhifubao.png">
+
+<img width="100" src="hthttps://mirckmuse.github.io/codemirror.cn/weixin.jpeg">
