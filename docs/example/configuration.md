@@ -28,7 +28,7 @@ CodeMirror 编辑器的配置存活在它的[状态对象](https://codemirror.ne
 ```
 扁平后，A 的优先级仍然高于 B。
 
-我们还有一个更麻烦的问题，怎么给一个拓展的子拓展提供排序信息。可以把拓展被包裹在 [Prec](Prec) 的其中一个属性，配置项扁平化后，拓展的部分会按照默认序列被放进不同的桶里面。目前有 [highest](https://codemirror.net/docs/ref/#state.Prec.highest)，[high](https://codemirror.net/docs/ref/#state.Prec.high)， [default](https://codemirror.net/docs/ref/#state.Prec.default)，[low](https://codemirror.net/docs/ref/#state.Prec.low) 和 [lowest](https://codemirror.net/docs/ref/#state.Prec.lowest) 桶。
+我们还有一个更麻烦的问题，怎么给一个拓展的子拓展提供排序信息。可以把拓展被包裹在 [Prec](https://codemirror.net/docs/ref/#state.Prec) 的其中一个属性，配置项扁平化后，拓展的部分会按照默认序列被放进不同的桶里面。目前有 [highest](https://codemirror.net/docs/ref/#state.Prec.highest)，[high](https://codemirror.net/docs/ref/#state.Prec.high)， [default](https://codemirror.net/docs/ref/#state.Prec.default)，[low](https://codemirror.net/docs/ref/#state.Prec.low) 和 [lowest](https://codemirror.net/docs/ref/#state.Prec.lowest) 桶。
 
 对于每个桶内部，拓展扁平化后的位置还是决定着优先级。而高优先级桶内的拓展都比低优先级桶的拓展优先级要高。比如下方例子里面的拓展 A：
 
