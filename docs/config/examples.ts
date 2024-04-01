@@ -12,9 +12,9 @@ export const ExampleBasic = [
     "link": `${prefix}/configuration`
   },
   {
-    "title": "Styling",
-    "desc": "How to style your editor or extension, and how to create a new editor theme.",
-    "link": "https://codemirror.net/examples/styling/"
+    "title": "样式",
+    "desc": "给编辑器或拓展添加样式，以及怎么创建一个新的编辑器主题",
+    "link": `${prefix}/styling`
   },
   {
     "title": "Handling Tab",
