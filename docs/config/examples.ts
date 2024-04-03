@@ -12,14 +12,14 @@ export const ExampleBasic = [
     "link": `${prefix}/configuration`
   },
   {
-    "title": "Styling",
-    "desc": "How to style your editor or extension, and how to create a new editor theme.",
-    "link": "https://codemirror.net/examples/styling/"
+    "title": "样式",
+    "desc": "给编辑器或拓展添加样式，以及怎么创建一个新的编辑器主题",
+    "link": `${prefix}/styling`
   },
   {
-    "title": "Handling Tab",
-    "desc": "If you're confused or annoyed that the editor doesn't handle Tab by default, read this.",
-    "link": "https://codemirror.net/examples/tab/"
+    "title": "Tab处理",
+    "desc": "编辑器默认不处理 Tab，感觉困惑或者苦恼的话，阅读本章",
+    "link": `${prefix}/tab`
   },
   {
     "title": "Huge Document",
