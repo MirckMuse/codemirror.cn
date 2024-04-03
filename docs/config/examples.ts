@@ -17,9 +17,9 @@ export const ExampleBasic = [
     "link": `${prefix}/styling`
   },
   {
-    "title": "Handling Tab",
-    "desc": "If you're confused or annoyed that the editor doesn't handle Tab by default, read this.",
-    "link": "https://codemirror.net/examples/tab/"
+    "title": "Tab处理",
+    "desc": "编辑器默认不处理 Tab，感觉困惑或者苦恼的话，阅读本章",
+    "link": `${prefix}/tab`
   },
   {
     "title": "Huge Document",

@@ -89,6 +89,95 @@ let myTheme = EditorView.theme({
 }, {dark: true})
 ```
 
-这段代码表示什么意思呢。首先，一些规则包含`&`占位符。这表示规则用在外部编辑器元素。默认情况下，生成的类名会有前缀和一个空格（比如 `.cm-content` 变成 `.gen001 .cm-content`）。但是外部元素的规则
+这段代码表示什么意思呢。首先，一些规则包含`&`占位符。这表示规则用在外部编辑器元素。默认情况下，生成的类名会有前缀和一个空格（比如 `.cm-content` 变成 `.gen001 .cm-content`）。但在直接针对外部元素（获取生成的类）的规则中，这是不起作用的，您必须放置一个&字符来指示在哪里插入类选择器。
 
-TODO: 
+其次，因为在CodeMirror中有两种显示选择的方式（原生选择和[drawSelection](https://codemirror.net/docs/ref/#view.drawSelection)扩展），主题通常希望同时设置样式——插入符号颜色和`::`选择规则适用于原生选择，而`.cm-cursor`和`.cm-selectionBackground`规则则设置库绘制选择的样式。
+
+最后，由于这是一个深色主题，它传递了一个`dark:true`选项，因此编辑器将为未明确设置主题样式的内容启用其深色默认样式。
+
+一个真正的主题会想要设计更多的东西，包括由扩展创建的元素（如[面板](https://codemirror.net/docs/ref/#h_panels)和[提示](https://codemirror.net/docs/ref/#h_tooltips)）。您通常还希望在主题中包含[高亮](https://codemirror.net/docs/ref/#language.HighlightStyle)样式。例如，您可以看到[One Dark](https://github.com/codemirror/theme-one-dark)主题，并可能复制和修改它以创建自己的主题。
+
+## 基础主题
+
+当您创建一个扩展，需要将一些新的DOM结构添加到编辑器中，通常需要包括一个为元素提供默认样式的基本主题。基本主题的行为很像常规主题，只是它们的优先级较低，并且可以为深色和浅色主题提供单独的规则。
+
+
+例如，假设有个拓展，想要把一个用蓝色圆圈替换所有字母o:
+
+``` javascript
+import { EditorView } from "@codemirror/view"
+
+let baseTheme = EditorView.baseTheme({
+  ".cm-o-replacement": {
+    display: "inline-block",
+    width: ".5em",
+    height: ".5em",
+    borderRadius: ".25em"
+  },
+  "&light .cm-o-replacement": {
+    backgroundColor: "#04c"
+  },
+  "&dark .cm-o-replacement": {
+    backgroundColor: "#5bf"
+  }
+})
+```
+
+`&dark`和`&light`占位符的作用很像`&`，只是它们扩展到一个只有当编辑器的主题是浅色或深色时才启用的类。在这种情况下，基本主题在深色主题中为其圆圈提供更亮的颜色（假设背景会更暗）。
+
+`baseTheme`返回的扩展必须添加到编辑器配置中才能（可靠地）生效 —— 样式规则只有在创建使用它们的编辑器时才会安装在DOM中。它通常与其他相关扩展捆绑在一个数组中，并从为该功能生成扩展的导出函数返回（例如，请参见斑马线示例）。
+
+## 高亮
+
+代码高亮显示使用的系统与编辑器范围内的主题化略有不同。代码样式也使用JavaScript创建，并通过编辑器扩展启用。但默认情况下，它们不使用稳定的、未生成的类名。高亮显示样式直接返回语法标记的类名。
+
+高亮显示将高亮显示标记与样式相关联。例如，这个为关键字和注释指定样式。
+
+``` javascript
+import { tags } from "@lezer/highlight"
+import { HighlightStyle } from "@codemirror/language"
+
+const myHighlightStyle = HighlightStyle.define([
+  { tag: tags.keyword, color: "#fc6" },
+  { tag: tags.comment, color: "#f5d", fontStyle: "italic" }
+])
+```
+
+给`HighlightStyle.define`的每个对象都会提到一个标记（由语言包分配给标记），否则会像主题中的对象一样包含样式属性。
+
+定义编辑器主题时，通常需要同时提供主题扩展和与之匹配的高亮显示样式。在syntaxHighlighting中包裹高亮显示样式（或其他高亮显示样式）以创建启用它的扩展。
+
+``` javascript
+import { syntaxHighlighting } from "@codemirror/language"
+
+// In your extensions...
+syntaxHighlighting(myHighlightStyle)
+
+```
+
+如果您需要使用普通的旧CSS为标记设置样式，您可以使用类HighlightStyle，它只需向标记添加一个静态类（例如cmt关键字），而无需实际为该类定义任何规则。
+
+## 溢出和滚动
+
+在没有任何自定义样式的情况下，CodeMirror编辑器可以垂直增长，滚动（而不是包裹）长行，并且在聚焦时除了焦环之外没有任何边框。
+
+若要启用换行，请将EditorView.lineWrapping扩展添加到您的配置中。也可以通过其他方式调整内容元素的空白样式，但库只支持预包装和预包装，如果不同时设置溢出包装：任意位置，则包装可能不可靠，因此建议仅使用此扩展来启用包装。
+
+通过给编辑器的外部元素一个高度，并在滚动器元素上设置overflow：auto，可以调整编辑器的垂直行为。
+
+``` javascript
+const fixedHeightEditor = EditorView.theme({
+  "&": { height: "300px" },
+  ".cm-scroller": { overflow: "auto" }
+})
+```
+
+要让编辑器增长到最大高度，并从该点开始滚动，请在上面的设置中使用最大高度而不是高度。
+
+由于一些模糊的CSS限制，给编辑器一个最小高度需要更多的考虑——你必须将这个高度分配给内容和槽，而不是包装器元素，以确保它们占据编辑器的整个高度。
+
+``` javascript
+const minHeightEditor = EditorView.theme({
+  ".cm-content, .cm-gutter": { minHeight: "200px" }
+})
+```
