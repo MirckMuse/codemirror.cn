@@ -22,22 +22,22 @@ export const ExampleBasic = [
     "link": `${prefix}/tab`
   },
   {
-    "title": "Huge Document",
-    "desc": "This demo creates an editor with a document of several million lines, just because we can.",
+    "title": "大文本【不做翻译】",
+    "desc": "这个案例创建一个运行数百万行文档的编辑器，只是因为我们可以",
     "link": "https://codemirror.net/examples/million/"
   },
   {
-    "title": "Internet Explorer 11",
-    "desc": "Setting up your editor so that it loads in Internet Explorer.",
-    "link": "https://codemirror.net/examples/ie11/"
+    "title": "IE11",
+    "desc": "设置编辑器，以便于它可以在 IE 中加载",
+    "link": `${prefix}/ie11`
   }
 ]
 
 export const ExampleLanguage = [
   {
-    "title": "Writing a Language Package",
-    "desc": "Adding support for a new language to CodeMirror.",
-    "link": "https://codemirror.net/examples/lang-package/"
+    "title": "编写一个语言包",
+    "desc": "给 CodeMirror 添加语言支持",
+    "link": `${prefix}/lang-package`
   },
   {
     "title": "Mixed-Language Parsing",
