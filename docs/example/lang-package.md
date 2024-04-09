@@ -6,7 +6,7 @@ CodeMirror 通过特定包支持语言（命名像是：`@codemirror/lang-python
 + 附加的语法（syntax）关联元数据，比如：高亮、缩进和折叠信息。
 + 各种语言特定拓展【可选】，比如：支持自动补全和语言特定的按键绑定。
 
-本例中，我们会实现一个类似 Lisp 语言非常迷你的语言包。Git 仓库[codemirror/lang-example](codemirror/lang-example)是个语言示例，带有构建工具配置等设置。这对于一开始构建属于自己的包非常有帮助。
+本例中，我们会实现一个类似 Lisp 语言非常迷你的语言包。Git 仓库[codemirror/lang-example](https://github.com/codemirror/lang-example)是个语言示例，带有构建工具配置等设置。这对于一开始构建属于自己的包非常有帮助。
 
 ## 解析
 
