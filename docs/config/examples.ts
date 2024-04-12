@@ -40,9 +40,9 @@ export const ExampleLanguage = [
     "link": `${prefix}/lang-package`
   },
   {
-    "title": "Mixed-Language Parsing",
-    "desc": "Setting up language support for documents that contain multiple languages.",
-    "link": "https://codemirror.net/examples/mixed-language/"
+    "title": "混合语言解析",
+    "desc": "配置支持多个语言的文档",
+    "link": `${prefix}/mixed-language`
   }
 ]
 
