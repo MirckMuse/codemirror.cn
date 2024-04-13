@@ -40,17 +40,17 @@ export const ExampleLanguage = [
     "link": `${prefix}/lang-package`
   },
   {
-    "title": "Mixed-Language Parsing",
-    "desc": "Setting up language support for documents that contain multiple languages.",
-    "link": "https://codemirror.net/examples/mixed-language/"
+    "title": "混合语言解析",
+    "desc": "配置支持多个语言的文档",
+    "link": `${prefix}/mixed-language`
   }
 ]
 
 export const ExampleProgrammingInterface = [
   {
-    "title": "Selection Handling",
-    "desc": "How to use and change the editor selection.",
-    "link": "https://codemirror.net/examples/selection/"
+    "title": "选择处理",
+    "desc": "怎么使用和修改编辑器选择",
+    "link": `${prefix}/selection`
   },
   {
     "title": "Document Changes",
