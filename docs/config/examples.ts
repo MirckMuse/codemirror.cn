@@ -48,9 +48,9 @@ export const ExampleLanguage = [
 
 export const ExampleProgrammingInterface = [
   {
-    "title": "Selection Handling",
-    "desc": "How to use and change the editor selection.",
-    "link": "https://codemirror.net/examples/selection/"
+    "title": "选择处理",
+    "desc": "怎么使用和修改编辑器选择",
+    "link": `${prefix}/selection`
   },
   {
     "title": "Document Changes",
