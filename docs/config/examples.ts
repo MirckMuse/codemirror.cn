@@ -53,9 +53,9 @@ export const ExampleProgrammingInterface = [
     "link": `${prefix}/selection`
   },
   {
-    "title": "Document Changes",
-    "desc": "How to write code that changes the editor document.",
-    "link": "https://codemirror.net/examples/change/"
+    "title": "文档修改",
+    "desc": "怎么编写代码修改编辑器文档",
+    "link": `${prefix}/change`
   },
   {
     "title": "Decoration",
