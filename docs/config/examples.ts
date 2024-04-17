@@ -58,9 +58,9 @@ export const ExampleProgrammingInterface = [
     "link": `${prefix}/change`
   },
   {
-    "title": "Decoration",
-    "desc": "Adding decorations to influence the way the editor content is drawn.",
-    "link": "https://codemirror.net/examples/decoration/"
+    "title": "装饰器",
+    "desc": "新增装饰器来影响编辑器绘制内容的方式",
+    "link": `${prefix}/decoration`
   },
   {
     "title": "Right-to-left text",
