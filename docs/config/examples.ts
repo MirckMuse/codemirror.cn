@@ -63,9 +63,9 @@ export const ExampleProgrammingInterface = [
     "link": `${prefix}/decoration`
   },
   {
-    "title": "Right-to-left text",
-    "desc": "Properly handling right-to-left and bidirectional text.",
-    "link": "https://codemirror.net/examples/bidi/"
+    "title": "从右到左文本",
+    "desc": "属性控制从右到左和双向文本",
+    "link": `${prefix}/bidi`
   },
   {
     "title": "Undoable Effects",
