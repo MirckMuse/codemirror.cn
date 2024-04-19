@@ -53,19 +53,19 @@ export const ExampleProgrammingInterface = [
     "link": `${prefix}/selection`
   },
   {
-    "title": "Document Changes",
-    "desc": "How to write code that changes the editor document.",
-    "link": "https://codemirror.net/examples/change/"
+    "title": "文档修改",
+    "desc": "怎么编写代码修改编辑器文档",
+    "link": `${prefix}/change`
   },
   {
-    "title": "Decoration",
-    "desc": "Adding decorations to influence the way the editor content is drawn.",
-    "link": "https://codemirror.net/examples/decoration/"
+    "title": "装饰器",
+    "desc": "新增装饰器来影响编辑器绘制内容的方式",
+    "link": `${prefix}/decoration`
   },
   {
-    "title": "Right-to-left text",
-    "desc": "Properly handling right-to-left and bidirectional text.",
-    "link": "https://codemirror.net/examples/bidi/"
+    "title": "从右到左文本",
+    "desc": "属性控制从右到左和双向文本",
+    "link": `${prefix}/bidi`
   },
   {
     "title": "Undoable Effects",
