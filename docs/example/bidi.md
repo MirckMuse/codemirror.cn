@@ -4,11 +4,11 @@
 
 然而，在代码编辑器的上下文中，您可能需要处理大量的拉丁文语法或标记名，因此从左到右的文本需求会变成更麻烦的双向文本需求。其实，编辑混合方向的文本会让人困惑和混乱，CodeMirror 尽可能让它变得可以忍受。
 
-光标移动（默认的按键映射定义）是可见的，如果按左箭头按键您的光标应该向左移动，不管光标位置的文本方向是什么。
+光标移动（[默认](https://codemirror.net/docs/ref/#commands.defaultKeymap)的按键映射定义）是可见的，如果按左箭头按键您的光标应该向左移动，不管光标位置的文本方向是什么。
 
 一些其他命令则是按照逻辑方向执行 —— 例如：`Backspace` 删除光标签的内容，在从左到右的文本中会删除左边的文本，在从右到左的文本中则删除右边的文本。类似地，`Delete` 删除光标后面的文本。
 
-当您定义自定义命令是可见的，您需要注意当前文本方向，然后决定用什么方式使用（可能需要用到前置参数像是 moveByChar）。
+当您定义自定义命令是可见的，您需要注意[当前文本方向](https://codemirror.net/docs/ref/#view.EditorView.textDirectionAt)，然后决定用什么方式使用（可能需要用到前置参数像是 [moveByChar](https://codemirror.net/docs/ref/#view.EditorView.moveByChar)）。
 
 ``` javascript
 function cursorSemicolonLeft(view: EditorView) {
@@ -28,21 +28,19 @@ function cursorSemicolonLeft(view: EditorView) {
 }
 ```
 
-在编写拓展的时候，需要注意文本方向而不是假定是从左到右的布局。编辑设置您的 CSS 使用 `direction-aware` 属性，如果不管用，那就得检查全局编辑器的方向，并根据该方向调整您的行为。
+在编写拓展的时候，需要注意文本方向而不是假定是从左到右的布局。编辑设置您的 CSS 使用 [`direction-aware` 属性](https://drafts.csswg.org/css-logical/#position-properties)，如果不管用，那就得检查[全局编辑器的方向](https://codemirror.net/docs/ref/#view.EditorView.textDirection)，并根据该方向调整您的行为。
 
 ## 双向隔离
 
 双向程序设计或者标记文本常见的问题是，用于文本布局的标准算法将两段定向文本之间的中性标点符号与错误的一侧相关联。例如，请参阅从右到左的HTML代码：
 
-A common issue with bidirectional programming or markup text is that the standard algorithm for laying the text out associates neutral punctuation characters between two pieces of directional text with the wrong side. See for example this right-to-left HTML code:
-
 <pre style="text-align: right">
   &lt;/span>الأزرق&lt;span class="blue">النص 
 </pre>
 
-Though in the logical text, the \<span class="blue"\> appears as a coherent string, the algorithm will consider the punctuation "\> to be part of the nearby right-to-left text, because that is the line's base direction. This results in an unreadable mess.
+尽管在该文本中，`<span class="blue">` 看起来是连贯的字符串，而算法会考虑 `\>` 符号考虑怎么贴近从右到左文本，这是因为这是该行的基础方向。当然，结果就有点难易阅读了。
 
-Thus, it can be useful to add elements with a unicode-bidi: isolate style around sections that should be ordered separate from the surrounding text. This bit of code does that for HTML tags:
+因此，在应该与周围文本分开排序的部分周围添加具有[unicode-bidi: isolate](https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi#isolate)样式的元素是有用的。这段代码为HTML标签做了这件事：
 
 ``` javascript
 import {
@@ -68,8 +66,10 @@ const htmlIsolates = ViewPlugin.fromClass(
     }
 
     update(update: ViewUpdate) {
-      if (update.docChanged || update.viewportChanged ||
-          syntaxTree(update.state) != this.tree) {
+      if (
+        update.docChanged || update.viewportChanged ||
+        syntaxTree(update.state) != this.tree
+      ) {
         this.isolates = computeIsolates(update.view)
         this.tree = syntaxTree(update.state)
       }
@@ -89,11 +89,11 @@ const htmlIsolates = ViewPlugin.fromClass(
 )
 ```
 
-This computes a set of decorations and keeps it up to date as the editor state changes. It provides the set to both the decoration and isolated range facets—the first makes sure the editable HTML is rendered appropriately, the second that CodeMirror's own order computations match the rendered order.
+`computeIsolates` 计算一系列[装饰器](https://codemirror.net/examples/decoration/)并确保和编辑器状态的变更保持一致。它提供包含[装饰器](https://codemirror.net/docs/ref/#view.EditorView.decorations)和[隔离区域](https://codemirror.net/docs/ref/#view.EditorView.bidiIsolatedRanges) facet集合，首先确保可编辑的HTML被适当渲染，其次确保 CodeMirror 自己计算的顺序与渲染顺序相匹配。
 
-Because styling something as isolated only works if it is rendered as a single HTML element, we don't want other decorations to break up the isolating decorations. Because lower-precedence decorations are rendered around higher-precedence ones, we use Prec.lowest to give this extension a very low precedence.
+因为隔离样式只能添加给单独 HTML 元素才能生效，我们不希望其他装饰器破坏这个隔离装饰器。因为低优先级的装饰器被渲染在高优先级周围，我们使用 [`Prec.lowest`](https://codemirror.net/docs/ref/#state.Prec.lowest) 给这个拓展设置一个非常低的优先级。
 
-computeIsolates uses the syntax tree to compute decorations for HTML tags in the visible ranges.
+`computeIsolates` 使用语法树计算装饰器在可视范围的 HTML 标签。
 
 ``` javascript
 import { RangeSetBuilder } from "@codemirror/state"
@@ -123,4 +123,4 @@ function computeIsolates(view: EditorView) {
 }
 ```
 
-Here's an editor showing this extension in action. Note that the HTML tags are shown coherently left-to-right.
+这有个编辑器展示了拓展的作用。可以注意 HTML 标签显示连贯的从左到右文本。
