@@ -73,9 +73,9 @@ export const ExampleProgrammingInterface = [
     "link": `${prefix}/inverted-effect`
   },
   {
-    "title": "Split View",
-    "desc": "How to set up two editor views looking at the same document.",
-    "link": "https://codemirror.net/examples/split/"
+    "title": "分离视图",
+    "desc": "配置 2 个视图查看同一份文档",
+    "link": `${prefix}/split`
   },
   {
     "title": "Extension: Zebra Stripes",
