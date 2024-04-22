@@ -233,7 +233,7 @@ function toggleBoolean(view: EditorView, pos: number) {
 
 给（Javascript）编辑器添加该插件后，您得到如下效果：
 
-如果想要看下行装饰器，可以查阅[斑马条纹案例](https://codemirror.net/examples/zebra/)。
+如果想要看下行装饰器，可以查阅[斑马条纹案例](/example/zebra)。
 
 ## 原子范围
 

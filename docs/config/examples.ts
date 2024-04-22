@@ -78,9 +78,9 @@ export const ExampleProgrammingInterface = [
     "link": `${prefix}/split`
   },
   {
-    "title": "Extension: Zebra Stripes",
-    "desc": "Constructing an extension that styles alternating lines.",
-    "link": "https://codemirror.net/examples/zebra/"
+    "title": "拓展：斑马条纹",
+    "desc": "构造一个拓展来添加交替行的样式",
+    "link": `${prefix}/zebra`
   }
 ]
 
