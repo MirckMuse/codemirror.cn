@@ -68,9 +68,9 @@ export const ExampleProgrammingInterface = [
     "link": `${prefix}/bidi`
   },
   {
-    "title": "Undoable Effects",
-    "desc": "Integrating editor state beyond the document with the undo history.",
-    "link": "https://codemirror.net/examples/inverted-effect/"
+    "title": "可撤销效果",
+    "desc": "给编辑器状态集成文档外的撤销记录",
+    "link": `${prefix}/inverted-effect`
   },
   {
     "title": "Split View",
