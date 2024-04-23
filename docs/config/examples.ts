@@ -86,38 +86,38 @@ export const ExampleProgrammingInterface = [
 
 export const ExampleIntegration = [
   {
-    "title": "Internationalization",
-    "desc": "Explains how the library handles UI text, and translates the editor into German.",
-    "link": "https://codemirror.net/examples/translate/"
+    "title": "国际化",
+    "desc": "解释库怎么处理 UI 的文本并翻译成德文",
+    "link": `${prefix}/translate`
   },
   {
-    "title": "Autocompletion",
-    "desc": "Providing hints for possible input in the editor.",
-    "link": "https://codemirror.net/examples/autocompletion/"
+    "title": "自动补全",
+    "desc": "为编辑器中可能的输入提供提示",
+    "link": `${prefix}/autocompletion`
   },
   {
-    "title": "Gutter",
-    "desc": "Defining and configuring editor gutters.",
-    "link": "https://codemirror.net/examples/gutter/"
+    "title": "槽",
+    "desc": "定义和配置编辑器槽",
+    "link": `${prefix}/gutter`
   },
   {
-    "title": "Editor Panels",
-    "desc": "Explains how to display UI panels above and below an editor.",
-    "link": "https://codemirror.net/examples/panel/"
+    "title": "编辑器面板",
+    "desc": "解释如何在编辑器上方和下方显示UI面板",
+    "link": `${prefix}/panel`
   },
   {
-    "title": "Displaying Tooltips",
-    "desc": "Shows how to use the tooltip extension to display a cursor tracker and a hover tooltip.",
-    "link": "https://codemirror.net/examples/tooltip/"
+    "title": "Tooltip显示",
+    "desc": "显示如何使用Tooltip扩展来显示光标跟踪器和悬停提示",
+    "link": `${prefix}/tooltip`
   },
   {
     "title": "Linting",
-    "desc": "Define a function that finds problems in the content, and show those problems in the editor.",
-    "link": "https://codemirror.net/examples/lint/"
+    "desc": "定义一个在内容中查找问题的函数，并在编辑器中显示这些问题",
+    "link": `${prefix}/lint`
   },
   {
-    "title": "Collaborative Editing",
-    "desc": "Setting up a collaborative editing system with CodeMirror.",
-    "link": "https://codemirror.net/examples/collab/"
+    "title": "协同编辑",
+    "desc": "与 CodeMirror 建立协作编辑系统。",
+    "link": `${prefix}/collab`
   }
 ]
