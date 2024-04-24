@@ -1,16 +1,16 @@
 # 案例：自动补全
 
-The @codemirror/autocomplete package provides functionality for displaying input suggestions in the editor. This example shows how to enable it and how to write your own completion sources.
+`@codemirror/autocomplete` 包提供在编辑器中显示输入建议的功能。本案例将会展示怎么开启它以及怎么编写出属于您的补全资源。
 
 ## 设置
 
-Autocompletion is enabled by including the autocompletion extension (which is included in the basic setup) in your configuration. Some language packages come with support for proper autocompletion built in, such as the HTML package.
+自动补全通过在配置中添加 autocompletion 拓展开启（已经被基本设置中包含）。一些语言包会内置一些自动补全，不让说 HTML 包。
 
-By default, the plugin will look for completions whenever the user types something, but you can configure it to only run when activated explicitly via a command.
+默认情况下，插件会在用户输入时查找补全，当然您也可以配置补全只在某种命令下激活。
 
-The default completion keymap binds Ctrl-Space to start completion, arrows to select a completion, Enter to pick it, and Escape to close the tooltip. It is activated by default when you add the extension, but you can disable that if you want to provide your own bindings.
+默认的补全按键绑定 `Ctrl-Space` 来开启，通过 `Arrow` 来选择补全，`Enter` 选中，`Escape` 关闭补全提示框。这些都会在添加补全拓展时默认激活，当然您也可以禁用这些默认按键绑定，来自定义按键。
 
-The default bindings do not bind Tab to acceptCompletion, for reasons outlined in the Tab-handling example.
+默认情况下，我们不会处理将 Tab 按键绑定到acceptComplement，这一点在之前的章节 [Tab处理](/example/tab) 有详细解释。
 
 ## 提供补全
 
