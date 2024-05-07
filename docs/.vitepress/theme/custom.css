@@ -75,3 +75,15 @@ ul.grid-list-5 {
 .limited-width-page .content {
   padding: 0;
 }
+
+.codemirror-scope {
+  color: #666;
+  font-size: 80%;
+}
+
+.codemiorr-keyword {
+  font-weight: 600;
+  margin-bottom: -4px;
+  color: black;
+  font-size: 14px;
+}
