@@ -1,5 +1,7 @@
 # 案例：编辑器面板
 
+面板是一个在编辑器上方或者下方的 UI 元素，由 `@codemirror/view` 包提供的功能。
+
 A “panel”, as supported by the @codemirror/view package, is a UI element shown above or below the editor. They will sit inside the editor's vertical space for editors with fixed height. When the editor is partially scrolled out of view, panels will be positioned to stay in view.
 
 This example shows how to add panels to your editor.
@@ -116,7 +118,7 @@ function wordCountPanel(view: EditorView): Panel {
 And finally, a function that build the extension that enables the panel in an editor.
 
 ``` javascript
-import {showPanel} from "@codemirror/view"
+import { showPanel } from "@codemirror/view"
 
 export function wordCounter() {
   return showPanel.of(wordCountPanel)
