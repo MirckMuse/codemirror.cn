@@ -1,18 +1,17 @@
 # 案例：编辑器面板
 
-面板是一个在编辑器上方或者下方的 UI 元素，由 `@codemirror/view` 包提供的功能。
+面板是一个在编辑器上方或者下方的 UI 元素，由 `@codemirror/view` 包提供的功能。对于具有固定高度的编辑器，它们将位于编辑器的垂直空间内。当编辑器部分滚动出视图时，面板将定位为保持在视图中。
 
-A “panel”, as supported by the @codemirror/view package, is a UI element shown above or below the editor. They will sit inside the editor's vertical space for editors with fixed height. When the editor is partially scrolled out of view, panels will be positioned to stay in view.
 
-This example shows how to add panels to your editor.
+本案例显示如何给您的编辑器添加面板。
 
 ## 打开和关闭面板
 
-The set of panels to show at a given time is determined by the value of the showPanel facet. To track the current state of our panel, we define this state field, with an effect to turn it on or off.
+面板集显示的时机由 `showPanel` facet 的值决定。为了跟踪面板的当前状态，我们定义了这个状态字段，其效果是打开或关闭它。
 
-``` javascript
-import {showPanel, Panel} from "@codemirror/view"
-import {StateField, StateEffect} from "@codemirror/state"
+``` typescript
+import { showPanel, Panel } from "@codemirror/view"
+import { StateField, StateEffect } from "@codemirror/state"
 
 const toggleHelp = StateEffect.define<boolean>()
 
@@ -26,22 +25,23 @@ const helpPanelState = StateField.define<boolean>({
 })
 ```
 
-The provide option wires this field up to the showPanel facet. The createHelpPanel function is defined like this:
+`provide` 选项将状态字段与 `showPanel` facet相关联。`createHelpPanel` 函数的定义如下：
 
-``` javascript
-import {EditorView} from "@codemirror/view"
+``` typescript
+import { EditorView } from "@codemirror/view"
 
 function createHelpPanel(view: EditorView) {
   let dom = document.createElement("div")
   dom.textContent = "F1: Toggle the help panel"
   dom.className = "cm-help-panel"
-  return {top: true, dom}
+  return { top: true, dom }
 }
 ```
 
-It's not a very useful panel. The object it returns can, apart from providing the panel's DOM structure, configure whether the panel should be at the top or bottom of the editor.
+这不是一个很有用的面板。它返回的对象除了提供面板的DOM结构外，还配置了面板应该位于编辑器的顶部还是底部。
 
-Next we define a key binding that makes F1 toggle the field on and off.
+接下来，我们定义一个按键绑定，使 `F1` 打开和关闭字段。
+
 
 ``` javascript
 const helpKeymap = [{
@@ -55,10 +55,10 @@ const helpKeymap = [{
 }]
 ```
 
-And tie everything together in the helpPanel function, which creates the extension that enables the field, the key binding, and a simple styling for the panel.
+然后通过 `helpPanel` 函数中将所有内容整合在一起，该函数将创建扩展，从而启用字段、键绑定和面板的简单样式。
 
 ``` javascript
-import {keymap} from "@codemirror/view"
+import { keymap } from "@codemirror/view"
 
 const helpTheme = EditorView.baseTheme({
   ".cm-help-panel": {
@@ -75,14 +75,14 @@ export function helpPanel() {
 
 ## 动态面板内容
 
-It is often necessary to keep the content of a panel in sync with the rest of the editor. For this purpose, the object returned by a panel constructor may have an update method that, much like the update method in view plugins, gets called every time the editor view updates.
+通常需要使面板的内容与编辑器的其他部分保持同步。为此，面板构造函数返回的对象可能有一个更新方法，就像视图插件中的更新方法一样，每次编辑器视图更新时都会调用该方法。
 
-Here we'll build a little extension that sets up a word-counting panel.
+我们将构建一个小的扩展，用于设置一个单词计数面板。
 
-First we need a (very crude, entirely Unicode-unaware) function that counts the words in a document.
+首先，我们需要一个函数来统计文档中的单词（比较粗糙，无法识别Unicode）。
 
-``` javascript
-import {Text} from "@codemirror/state"
+``` typescript
+import { Text } from "@codemirror/state"
 
 function countWords(doc: Text) {
   let count = 0, iter = doc.iter()
@@ -98,10 +98,10 @@ function countWords(doc: Text) {
 }
 ```
 
-Next, a panel constructor building a panel that re-counts the words every time the document changes.
+然后，通过面板的构造函数构建一个面板，在每次文档更改时重新计算单词数。
 
-``` javascript
-import {EditorView, Panel} from "@codemirror/view"
+``` typescript
+import { EditorView, Panel } from "@codemirror/view"
 
 function wordCountPanel(view: EditorView): Panel {
   let dom = document.createElement("div")
@@ -115,7 +115,8 @@ function wordCountPanel(view: EditorView): Panel {
   }
 }
 ```
-And finally, a function that build the extension that enables the panel in an editor.
+
+最后，通过一个函数构建扩展，在编辑器中启用面板。
 
 ``` javascript
 import { showPanel } from "@codemirror/view"
