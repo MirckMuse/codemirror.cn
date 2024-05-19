@@ -1,3 +1,7 @@
+---
+pageClass: codemirror-ref
+---
+
 # 指引手册
 
 CodeMirror 在 `@codemirror` 域下发布一系列 NPM 包。核心包会在在本指引手册中罗列出来。
@@ -24,19 +28,33 @@ let myView = new EditorView({
 想要快速使用，[codemirror](/documentation/ref.html#codemirror) 包提供一系列拓展来配置可用编辑器。
 
 
-## <span class="codemirror-scope">@codemirror/</span>state
+## <span class="codemirror-scope">@codemirror/</span>state {#state}
 
-#### <span class="codemiorr-keyword">interface</span> EditorStateConfig
+In its most basic form, an editor's state is made up of a current document and a selection. Because there are a lot of extra pieces that an editor might need to keep in its state (such as an undo history or syntax tree), it is possible for extensions to add additional fields to the state object.
+
+#### <span class="codemiorr-keyword">interface</span> EditorStateConfig {#state.EditorStateConfig}
 
 创建编辑器状态需要传递的参数。
 
-+ doc?: string | Text
-+ selection?: EditorSelection ｜ \{ anchor: number, head?: number  \}
-+ extensions?: Extension
++ **doc?:** string | Text {#state.EditorStateConfig.doc}
+  
+  初始化文档。默认为空白文档。可以传入普通字符串或者一个 [Text](/documentation/ref#state.Text) 类的实例。Can be provided either as a plain string (which will be split into lines according to the value of the lineSeparator facet), or an instance of the Text class (which is what the state will use to represent the document).
++ **selection?:** EditorSelection ｜ \{ anchor: number, head?: number  \}
+  
+  The starting selection. Defaults to a cursor at the very start of the document.
++ **extensions?:** Extension
 
-#### <span class="codemiorr-keyword">class</span> EditorState
+  Extension(s) to associate with this state.
+
+#### <span class="codemiorr-keyword">class</span> EditorState {#state.EditorState}
+
+The editor state class is a persistent (immutable) data structure. To update a state, you create a transaction, which produces a new state instance, without modifying the original object.
+
+As such, never mutate properties of a state directly. That'll just break things.
 
 + doc: Text
+
+  当前文档。
 + selection: EditorSelection
 + field\<T\>(field: StateField\<T\>) → T<br>field\<T\>(field:StateField\<T\>, require: false) → T | undefined
 + update(...specs: readonly TransactionSpec[]) → Transaction
@@ -50,7 +68,7 @@ let myView = new EditorView({
 
 Text 类型存储一个不可变的树形文档。
 
-#### <span class="codemiorr-keyword">class</span> Text <span class="codemiorr-keyword">implements</span> Iterable\<string\>
+#### <span class="codemiorr-keyword">class</span> Text <span class="codemiorr-keyword">implements</span> Iterable\<string\> {#state.Text}
 
 文档的数据结构。
 

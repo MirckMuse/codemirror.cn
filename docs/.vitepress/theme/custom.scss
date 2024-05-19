@@ -87,3 +87,29 @@ ul.grid-list-5 {
   color: black;
   font-size: 14px;
 }
+
+.codemirror-ref .vp-doc {
+  p {
+    margin-top: 0;
+  }
+
+  h2 {
+    margin-top: 24px;
+  }
+
+  h3 {
+    margin: 16px 0;
+  }
+
+  h4 {
+    margin-bottom: 12px;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li p+p {
+    margin-top: 0;
+  }
+}

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/MirckMuse/codemirror.cn#readme",
   "devDependencies": {
+    "sass": "^1.77.0",
     "vitepress": "^1.1.3"
   }
 }
