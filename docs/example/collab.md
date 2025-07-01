@@ -1,24 +1,18 @@
 # 案例：协同编辑
 
-实时协同编辑是一种技术，不同机器上的多个人可以同时编辑同一文档。更改会通过网络传播给其他参与者，并在他们到达后立即显示在文档视图中。
+实时协同编辑是一种可以让多人在不同机器上同时编辑同一文档的技术。更改会通过网络传播给其他参与者，并立即显示在文档视图中。
 
-Real-time collaborative editing is a technique where multiple people on different machines can edit the same document at the same time. Changes are propagated to other participants over the network and show up in their views of the document as soon as they arrive.
+以下是此页面中的协同编辑设置：
 
-以下是此页面中的玩具协作编辑设置：
+这种编辑风格的主要困难是处理相互冲突的编辑 —— 由于网络通信不是即时的，人们有可能同时做出改变，当再次同步每个人时，必须以某种方式进行协调。
 
-Here's a toy collaborative editing setup that lives within this page:
-
-这种编辑风格的主要困难是处理相互冲突的编辑——由于网络通信不是即时的，人们有可能同时做出改变，当再次同步每个人时，必须以某种方式进行协调。
-
-The main difficulty with this style of editing is handling of conflicting edits—since network communication isn't instantaneous, it is possible for people to make changes at the same time, which have to be reconciled in some way when synchronizing everybody up again.
+CodeMirror 带有基于操作转换且有一个中央权威（服务器）为更改分配明确顺序的协作编辑实用程序。这个示例描述了你设置这样一个系统所需的实际信息。如需更多理论信息，请参阅这篇博客文章。
 
 CodeMirror提供了基于操作转换的协作编辑实用程序，该实用程序具有为更改分配明确顺序的中央机构（服务器）。此示例描述了设置这样一个系统所需的实用信息。有关更多理论信息，请参阅这篇博客文章。
 
 CodeMirror comes with utilities for collaborative editing based on operational transformation with a central authority (server) that assigns a definite order to the changes. This example describes the practical information you need to set up such a system. For more theoretical information, see this blog post.
 
-（也可以将不同的协作编辑算法连接到CodeMirror。例如，请参见Yjs。）
-
-(It is also possible to wire up different collaborative editing algorithms to CodeMirror. See for example Yjs.)
+（也可以将不同的协作编辑算法连接到 CodeMirror。例如可以看看 Yjs。）
 
 ## 原则
 
@@ -196,7 +190,6 @@ function getDocument(
 
 To manage the communication with the authority, we use a view plugin (which are almost always the right place for asynchronous logic in CodeMirror). This plugin will constantly (in an async loop) try to pull in new updates and, if it gets them, apply them to the editor using the receiveUpdates function.
 
-
 当编辑器的内容发生变化时，插件开始尝试推送其本地更新。它保留一个字段，以确保只有一个正在运行的推送请求，并粗略地设置一个超时，以便在请求后仍有未经确认的更改时重试推送。当推送失败或在推送过程中引入新的更改时，可能会发生这种情况。
 
 When the content of the editor changes, the plugin starts trying to push its local updates. It keeps a field to make sure it only has one running push request, and crudely sets a timeout to retry pushing when there are still unconfirmed changes after the request. This can happen when the push failed or new changes were introduced while it was in progress.
@@ -317,7 +310,7 @@ Since the effect refers to positions in the document, it needs a map function to
 Now with a function like this as sharedEffects source, we'd get these effects in our Update objects:
 
 ``` javascript
-import {collab} from "@codemirror/collab"
+import { collab } from "@codemirror/collab"
 
 let markCollab = {
   // ...

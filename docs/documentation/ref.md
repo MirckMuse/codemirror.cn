@@ -124,7 +124,13 @@ Text 类型存储一个不可变的树形文档。
 
 ### 工具类
 
+#### combineConfig
+
 ## <span class="codemirror-scope">@codemirror/</span>view
+
+view 包是用户可见的其中一个部分 —— 一个用于展示编辑状态并允许文本编辑的 DOM 组件。
+
+### <span class="codemiorr-keyword">interface</span> EditorViewConfig \<T extends RangeValue\> TODO
 
 ## <span class="codemirror-scope">@codemirror/</span>language
 
